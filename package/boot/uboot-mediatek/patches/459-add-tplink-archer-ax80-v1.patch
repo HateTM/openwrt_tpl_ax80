@@ -264,10 +264,10 @@
 +bootcmd=run check_buttons ; run boot_production ; run boot_recovery
 +bootconf=config-1
 +bootdelay=0
-+bootfile=openwrt-mediatek-filogic-tplink_archer-ax80-v1-initramfs-recovery.itb
-+bootfile_bl2=openwrt-mediatek-filogic-tplink_archer-ax80-v1-preloader.bin
-+bootfile_fip=openwrt-mediatek-filogic-tplink_archer-ax80-v1-bl31-uboot.fip
-+bootfile_upg=openwrt-mediatek-filogic-tplink_archer-ax80-v1-squashfs-sysupgrade.itb
++bootfile=openwrt-mediatek-filogic-tplink_archer_ax80-v1-initramfs-recovery.itb
++bootfile_bl2=openwrt-mediatek-filogic-tplink_archer_ax80-v1-preloader.bin
++bootfile_fip=openwrt-mediatek-filogic-tplink_archer_ax80-v1-bl31-uboot.fip
++bootfile_upg=openwrt-mediatek-filogic-tplink_archer_ax80-v1-squashfs-sysupgrade.itb
 +bootmenu_confirm_return=askenv - Press ENTER to return to menu ; bootmenu 60
 +bootmenu_default=0
 +bootmenu_delay=0
