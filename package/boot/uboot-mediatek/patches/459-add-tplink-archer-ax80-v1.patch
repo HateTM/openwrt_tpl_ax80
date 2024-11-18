@@ -1,7 +1,7 @@
-@@ -0,0 +1,308 @@
+@@ -0,0 +1,372 @@
 --- /dev/null
 +++ b/configs/mt7986_tplink_archer_ax80-v1_defconfig
-@@ -0,0 +1,107 @@
+@@ -0,0 +1,108 @@
 +CONFIG_ARM=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
 +CONFIG_POSITION_INDEPENDENT=y
@@ -84,6 +84,7 @@
 +CONFIG_LED=y
 +CONFIG_LED_BLINK=y
 +CONFIG_LED_GPIO=y
++CONFIG_LEDS_LP5523=y
 +CONFIG_MTD=y
 +CONFIG_DM_MTD=y
 +CONFIG_MTD_SPI_NAND=y
@@ -111,7 +112,7 @@
 +CONFIG_LMB_MAX_REGIONS=64
 --- /dev/null
 +++ b/arch/arm/dts/mt7986a-tplink_archer_ax80-v1.dts
-@@ -0,0 +1,141 @@
+@@ -0,0 +1,201 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (c) 2021 MediaTek Inc.
@@ -122,6 +123,7 @@
 +#include "mt7986.dtsi"
 +#include <dt-bindings/gpio/gpio.h>
 +#include <dt-bindings/input/linux-event-codes.h>
++#include <dt-bindings/pinctrl/mt65xx.h>
 +
 +/ {
 +	#address-cells = <1>;
@@ -141,14 +143,20 @@
 +
 +	keys {
 +		compatible = "gpio-keys-polled";
-+
-+		reset {
++   reset {
 +			label = "reset";
 +			linux,code = <KEY_RESTART>;
 +			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 +		};
-+	};
-+
++};
++	  reg_3p3v: regulator-3p3v {
++		  compatible = "regulator-fixed";
++		  regulator-name = "fixed-3.3V";
++		  regulator-min-microvolt = <3300000>;
++		  regulator-max-microvolt = <3300000>;
++		  regulator-boot-on;
++		  regulator-always-on;
++	  };
 +};
 +
 +&uart0 {
@@ -207,6 +215,41 @@
 +			groups = "uart1_2";
 +		};
 +	};
++	pwm_pins: pwm0-pins-func-1 {
++		mux {
++			function = "pwm";
++			groups = "pwm0";
++		};
++	};
++
++	mmc0_pins_default: mmc0default {
++		mux {
++			function = "flash";
++			groups =  "emmc_45";
++			input-schmitt-enable;
++		};
++
++		conf-cmd-dat {
++			pins = "SPI0_CLK", "SPI0_MOSI", "SPI0_MISO",
++			       "SPI0_CS", "SPI0_HOLD", "SPI0_WP",
++			       "SPI1_CLK", "SPI1_MOSI", "SPI1_MISO";
++			input-enable;
++			drive-strength = <MTK_DRIVE_4mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		conf-clk {
++			pins = "SPI1_CS";
++			drive-strength = <MTK_DRIVE_4mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		conf-rst {
++			pins = "PWM1";
++			drive-strength = <MTK_DRIVE_4mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
 +};
 +
 +&spi0 {
@@ -250,8 +293,26 @@
 +	};
 +};
 +
++&pwm {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pwm_pins>;
++	status = "okay";
++};
++
 +&watchdog {
 +	status = "disabled";
++};
++
++&mmc0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&mmc0_pins_default>;
++	bus-width = <8>;
++	max-frequency = <52000000>;
++	cap-mmc-highspeed;
++	cap-mmc-hw-reset;
++	vmmc-supply = <&reg_3p3v>;
++	non-removable;
++	status = "okay";
 +};
 --- /dev/null
 +++ b/tplink_archer_ax80-v1_env
