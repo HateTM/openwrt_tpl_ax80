@@ -8,7 +8,7 @@
 
 / {
 	model = "TP-Link Archer AX80V1";
-	compatible = "tplink,archer_ax80-v1", "mediatek,mt7986a";
+	compatible = "tplink,archer-ax80-v1", "mediatek,mt7986a";
 
 	aliases {
 		serial0 = &uart0;
