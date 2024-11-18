@@ -573,7 +573,7 @@ endef
 define U-Boot/mt7986_tplink_archer_ax80-v1
   NAME:=TP-LINK ARCHER AX80v1
   BUILD_SUBTARGET:=filogic
-  BUILD_DEVICES:=tplink_archer-ax80-v1
+  BUILD_DEVICES:=tplink_archer_ax80-v1
   UBOOT_CONFIG:=mt7986_tplink_archer_ax80-v1
   UBOOT_IMAGE:=u-boot.fip
   BL2_BOOTDEV:=spim-nand-ubi
