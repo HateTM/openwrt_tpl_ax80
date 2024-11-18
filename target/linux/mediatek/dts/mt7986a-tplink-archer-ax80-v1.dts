@@ -99,16 +99,6 @@
 	status = "okay";
 };
 
-&gmac0 {
-	nvmem-cells = <&macaddr_factory_8000 0>;
-	nvmem-cell-names = "mac-address";
-};
-
-&gmac1 {
-	nvmem-cells = <&macaddr_factory_8000 1>;
-	nvmem-cell-names = "mac-address";
-};
-
 &pwm {
         pinctrl-names = "default";
         pinctrl-0 = <&pwm0_pin &pwm1_pin_g1>;
@@ -143,6 +133,15 @@
 	};
 };
 
+&gmac0 {
+	nvmem-cells = <&macaddr_factory_8000 0>;
+	nvmem-cell-names = "mac-address";
+};
+
+&gmac1 {
+	nvmem-cells = <&macaddr_factory_8000 1>;
+	nvmem-cell-names = "mac-address";
+};
 
 &mdio {
 	#address-cells = <1>;
