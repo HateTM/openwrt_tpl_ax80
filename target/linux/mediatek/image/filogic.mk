@@ -1207,7 +1207,7 @@ define Device/tplink_archer-ax80-v1
   IMAGE/sysupgrade.itb := append-kernel | \
 	fit gzip $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb external-with-rootfs | append-metadata
   ARTIFACTS := bl31-uboot.fip preloader.bin
-  ARTIFACT/bl31-uboot.fip := mt7986-bl31-uboot tplink_archer_ax80-v1
+  ARTIFACT/bl31-uboot.fip := mt7986-bl31-uboot tplink_archer-ax80-v1
   ARTIFACT/preloader.bin := mt7986-bl2 spim-nand-ubi-ddr3
 endef
 TARGET_DEVICES += tplink_archer-ax80-v1
