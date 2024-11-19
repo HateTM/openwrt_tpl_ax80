@@ -5,7 +5,7 @@
 #include "mt7986a.dtsi"
 #include <dt-bindings/input/input.h>
 #include <dt-bindings/gpio/gpio.h>
-#include <dt-bindings/leds/common.h>
+
 
 / {
 	model = "TP-Link Archer AX80V1";
@@ -75,26 +75,21 @@
 	};
 	
 
-        sound_wm8960 {
-		compatible = "mediatek,mt7986-wm8960-sound";
+        sound {
+		compatible = "mediatek,mt7986-wm8960-machine";
+		mediatek,platform = <&afe>;
 		audio-routing = "Headphone", "HP_L",
 				"Headphone", "HP_R",
 				"LINPUT1", "AMIC",
 				"RINPUT1", "AMIC";
-
+		mediatek,audio-codec = <&wm8960>;
 		status = "okay";
-
-		platform {
-			sound-dai = <&afe>;
-		};
-
-		codec {
-			sound-dai = <&wm8960>;
-		};
 	};
 
 };
-
+&auxadc {
+        status = "okay";
+};
 &crypto {
 	status = "okay";
 };
