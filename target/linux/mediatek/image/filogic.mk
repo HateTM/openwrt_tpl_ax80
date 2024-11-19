@@ -1186,7 +1186,7 @@ define Device/ruijie_rg-x60-pro
 endef
 TARGET_DEVICES += ruijie_rg-x60-pro
 
-define Device/tplink_archer_ax80-v1
+define Device/tplink_archer-ax80-v1
   DEVICE_VENDOR := TP-Link
   DEVICE_MODEL := Archer AX80V1 (UBI)
   DEVICE_DTS := mt7986a-tplink-archer-ax80-v1
@@ -1210,7 +1210,7 @@ define Device/tplink_archer_ax80-v1
   ARTIFACT/bl31-uboot.fip := mt7986-bl31-uboot tplink_archer_ax80-v1
   ARTIFACT/preloader.bin := mt7986-bl2 spim-nand-ubi-ddr3
 endef
-TARGET_DEVICES += tplink_archer_ax80-v1
+TARGET_DEVICES += tplink_archer-ax80-v1
 
 define Device/tplink_re6000xd
   DEVICE_VENDOR := TP-Link
