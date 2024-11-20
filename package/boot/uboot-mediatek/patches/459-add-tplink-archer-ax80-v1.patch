@@ -1,4 +1,4 @@
-@@ -0,0 +1,373 @@
+@@ -0,0 +1,372 @@
 --- /dev/null
 +++ b/configs/mt7986_tplink_archer-ax80-v1_defconfig
 @@ -0,0 +1,109 @@
