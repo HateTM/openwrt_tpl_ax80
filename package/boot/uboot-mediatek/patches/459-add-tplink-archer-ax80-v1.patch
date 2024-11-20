@@ -113,7 +113,7 @@
 +CONFIG_LMB_MAX_REGIONS=64
 --- /dev/null
 +++ b/arch/arm/dts/mt7986a-tplink_archer-ax80-v1.dts
-@@ -0,0 +1,202 @@
+@@ -0,0 +1,101 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (c) 2021 MediaTek Inc.
