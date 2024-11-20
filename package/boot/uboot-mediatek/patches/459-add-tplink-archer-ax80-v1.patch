@@ -1,7 +1,7 @@
-@@ -0,0 +1,372 @@
+@@ -0,0 +1,373 @@
 --- /dev/null
 +++ b/configs/mt7986_tplink_archer-ax80-v1_defconfig
-@@ -0,0 +1,108 @@
+@@ -0,0 +1,109 @@
 +CONFIG_ARM=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
 +CONFIG_POSITION_INDEPENDENT=y
@@ -84,6 +84,7 @@
 +CONFIG_LED=y
 +CONFIG_LED_BLINK=y
 +CONFIG_LED_GPIO=y
++CONFIG_LEDS_LP55XX_COMMON=y
 +CONFIG_LEDS_LP5523=y
 +CONFIG_MTD=y
 +CONFIG_DM_MTD=y
@@ -112,7 +113,7 @@
 +CONFIG_LMB_MAX_REGIONS=64
 --- /dev/null
 +++ b/arch/arm/dts/mt7986a-tplink_archer-ax80-v1.dts
-@@ -0,0 +1,201 @@
+@@ -0,0 +1,202 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (c) 2021 MediaTek Inc.
@@ -316,7 +317,7 @@
 +};
 --- /dev/null
 +++ b/tplink_archer-ax80-v1_env
-@@ -0,0 +1,53 @@
+@@ -0,0 +1,54 @@
 +ipaddr=192.168.1.1
 +serverip=192.168.1.254
 +loadaddr=0x46000000
