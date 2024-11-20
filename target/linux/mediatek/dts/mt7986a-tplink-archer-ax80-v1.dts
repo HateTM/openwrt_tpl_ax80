@@ -6,6 +6,7 @@
 #include <dt-bindings/input/input.h>
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/leds/common.h>
+#include <dt-bindings/leds/leds-lp55xx.h>
 
 
 / {
@@ -379,10 +380,13 @@
 		reg = <0x1a>;
 	};
 
-lp5523:	lp55231@32 {
+       lp55231: led_controller@32 {
+                #address-cells = <1>;
+                #size-cells = <0>;
 		compatible = "ti,lp55231";
 		reg = <0x32>;
 		clock-mode = /bits/ 8 <1>;
+                ti,charge-pump-mode = <LP55XX_CP_BYPASS>;
 
 		chan0 {
 			chan-name = "d1";
