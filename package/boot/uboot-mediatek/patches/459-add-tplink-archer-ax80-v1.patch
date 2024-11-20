@@ -317,7 +317,7 @@
 +};
 --- /dev/null
 +++ b/tplink_archer-ax80-v1_env
-@@ -0,0 +1,54 @@
+@@ -0,0 +1,53 @@
 +ipaddr=192.168.1.1
 +serverip=192.168.1.254
 +loadaddr=0x46000000
