@@ -36,10 +36,12 @@ case "$board" in
 abt,asr3000|\
 h3c,magic-nx30-pro|\
 jcg,q30-pro|\
+mercusys,mr90x-v1-ubi|\
 netcore,n60|\
 nokia,ea0326gmp|\
 qihoo,360t7|\
 routerich,ax3000-ubootmod|\
+tplink,archer-ax80-v1-ubi|\
 tplink,tl-xdr4288|\
 tplink,tl-xdr6086|\
 tplink,tl-xdr6088|\
@@ -56,7 +58,8 @@ acer,vero-w6m|\
 glinet,gl-mt2500|\
 glinet,gl-mt6000|\
 glinet,gl-x3000|\
-glinet,gl-xe3000)
+glinet,gl-xe3000|\
+nradio,c8-668gl)
 	local envdev=$(find_mmc_part "u-boot-env")
 	ubootenv_add_uci_config "$envdev" "0x0" "0x80000"
 	;;
@@ -105,9 +108,14 @@ glinet,gl-mt3000)
 	;;
 mercusys,mr90x-v1|\
 routerich,ax3000|\
+tenbay,wr3000k|\
 tplink,re6000xd)
 	local envdev=/dev/mtd$(find_mtd_index "u-boot-env")
 	ubootenv_add_uci_config "$envdev" "0x0" "0x20000" "0x20000" "1"
+	;;
+tplink,archer-ax80-v1)
+	local envdev=/dev/mtd$(find_mtd_index "u-boot-env")
+	ubootenv_add_uci_config "$envdev" "0x0" "0x20000" "0x20000" "8"
 	;;
 openembed,som7981)
 	ubootenv_add_uci_config "/dev/mtd1" "0x0" "0x80000" "0x80000"
