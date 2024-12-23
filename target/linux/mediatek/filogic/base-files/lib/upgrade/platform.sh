@@ -82,6 +82,7 @@ platform_do_upgrade() {
 	netcore,n60|\
 	qihoo,360t7|\
 	routerich,ax3000-ubootmod|\
+	tplink,archer-ax80-v1-ubi|\
 	tplink,tl-xdr4288|\
 	tplink,tl-xdr6086|\
 	tplink,tl-xdr6088|\
@@ -123,6 +124,7 @@ platform_do_upgrade() {
 	yuncore,ax835)
 		default_do_upgrade "$1"
 		;;
+	tplink,archer-ax80-v1|\
 	mercusys,mr90x-v1|\
 	tplink,re6000xd)
 		CI_UBIPART="ubi0"
